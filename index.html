@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Fountains of Care | Disability Support Services</title>
-<meta name="description" content="Fountains of Care Pty Ltd – NDIS registered disability support provider servicing Mudgee, Rylstone, Gulgong & surrounding areas." />
+<title>Fountains of Care Pty Ltd | Disability Support</title>
+<meta name="description" content="Fountains of Care Pty Ltd – Registered NDIS Service Provider. Servicing Mudgee, Rylstone, Gulgong & Surroundings." />
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -17,8 +17,12 @@
   --muted:#6b8f80;
   --line:#d9efe3;
   --shadow: 0 18px 44px rgba(18,53,40,.10);
+  --shadow-soft: 0 10px 24px rgba(18,53,40,.07);
   --radius: 20px;
+  --radius-sm: 14px;
 }
+
+/* Base */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -27,15 +31,25 @@ body{
   color:var(--text);
   background:#fff;
   line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 a{color:inherit}
 .container{width:min(1120px, 92%); margin:auto}
 
+/* Subtle background texture */
+.bg-wash{
+  background:
+    radial-gradient(900px 420px at 10% 10%, rgba(43,182,115,.12), transparent 60%),
+    radial-gradient(700px 420px at 90% 10%, rgba(31,157,99,.08), transparent 60%),
+    radial-gradient(700px 500px at 50% 110%, rgba(234,246,240,.95), transparent 60%);
+}
+
 /* Header */
 header{
   position:sticky; top:0; z-index:50;
-  background: rgba(255,255,255,.88);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,.86);
+  backdrop-filter: blur(12px);
   border-bottom:1px solid var(--line);
 }
 .header-inner{
@@ -43,24 +57,31 @@ header{
   padding:14px 0;
   gap:16px;
 }
-.brand{
-  display:flex; align-items:center; gap:12px;
+.brand-title{
+  font-weight:600;
+  letter-spacing:.2px;
+  text-transform:uppercase;
 }
-.brand img{
-  width:44px; height:44px; border-radius:999px;
-  border:1px solid rgba(43,182,115,.35);
-  background:#fff;
+.brand-sub{
+  display:block;
+  font-size:12px;
+  color:var(--muted);
+  margin-top:2px;
 }
-.brand-title{font-weight:600; letter-spacing:-.2px}
-.brand-sub{display:block; font-size:12px; color:var(--muted); margin-top:2px}
 nav{display:flex; align-items:center; gap:16px; flex-wrap:wrap}
 nav a{
   text-decoration:none;
   font-size:14px;
   color:var(--muted);
   font-weight:500;
+  padding:8px 10px;
+  border-radius:999px;
+  transition: background .2s ease, color .2s ease;
 }
-nav a:hover{color:var(--text)}
+nav a:hover{
+  background: rgba(234,246,240,.9);
+  color:var(--text);
+}
 .btn{
   display:inline-flex; align-items:center; justify-content:center;
   padding:10px 16px;
@@ -71,17 +92,26 @@ nav a:hover{color:var(--text)}
   background: linear-gradient(135deg, var(--green), var(--green-dark));
   color:#fff;
   box-shadow: 0 14px 28px rgba(31,157,99,.18);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
 }
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(31,157,99,.22);
+  filter:saturate(1.03);
+}
+.btn:active{transform: translateY(0)}
 .btn.secondary{
   background:#fff;
   color:var(--green-dark);
   box-shadow:none;
+  border:1px solid rgba(43,182,115,.35);
+}
+.btn.secondary:hover{
+  background: rgba(234,246,240,.75);
 }
 
 /* Hero */
-.hero{
-  padding:70px 0 40px;
-}
+.hero{padding:78px 0 52px}
 .hero-grid{
   display:grid;
   grid-template-columns: 1.08fr .92fr;
@@ -92,7 +122,7 @@ nav a:hover{color:var(--text)}
   display:inline-flex; align-items:center; gap:10px;
   padding:8px 12px;
   border-radius:999px;
-  background: var(--mint);
+  background: rgba(234,246,240,.95);
   border:1px solid rgba(43,182,115,.22);
   color:var(--green-dark);
   font-weight:600;
@@ -100,30 +130,39 @@ nav a:hover{color:var(--text)}
 }
 .dot{width:8px;height:8px;border-radius:999px;background:var(--green)}
 h1{
-  font-size:42px;
-  font-weight:400;
-  line-height:1.15;
-  letter-spacing:-.6px;
+  font-size:44px;
+  font-weight:350;
+  line-height:1.12;
+  letter-spacing:-.9px;
   margin:14px 0 14px;
 }
 .lead{
   margin:0;
   color:var(--muted);
-  max-width:56ch;
+  max-width:60ch;
   font-size:16px;
 }
 .cta{
   margin-top:18px;
   display:flex; gap:12px; flex-wrap:wrap;
 }
+
 .hero-card{
   border-radius: var(--radius);
   overflow:hidden;
   border:1px solid rgba(217,239,227,.95);
   box-shadow: var(--shadow);
   background:#fff;
+  transform: translateZ(0);
 }
-.hero-card img{width:100%; display:block; height:420px; object-fit:cover}
+.hero-card img{
+  width:100%;
+  display:block;
+  height:440px;
+  object-fit:cover;
+  transition: transform .7s cubic-bezier(.2,.8,.2,1);
+}
+.hero-card:hover img{transform: scale(1.03)}
 .hero-card .cap{
   padding:12px 14px;
   border-top:1px solid var(--line);
@@ -133,59 +172,103 @@ h1{
 }
 
 /* Sections */
-.section{padding:76px 0}
+.section{padding:84px 0}
 .section.soft{
-  background: linear-gradient(180deg, #fff 0%, var(--mint) 20%, #fff 100%);
+  background:
+    radial-gradient(900px 420px at 20% 0%, rgba(43,182,115,.10), transparent 60%),
+    linear-gradient(180deg, #fff 0%, var(--mint) 22%, #fff 100%);
 }
 .section h2{
-  font-weight:400;
+  font-weight:360;
   font-size:30px;
-  letter-spacing:-.3px;
+  letter-spacing:-.35px;
   margin:0 0 10px;
 }
-.sub{
+.sub{color:var(--muted); margin:0; max-width:72ch}
+
+/* Flyer text card */
+.flyer-card{
+  margin-top:18px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius: var(--radius);
+  padding:18px 18px 16px;
+  box-shadow: var(--shadow-soft);
+}
+.flyer-quote{
+  font-size:15px;
+  line-height:1.75;
   color:var(--muted);
   margin:0;
 }
 
-/* Services */
-.services{
-  margin-top:28px;
+/* Two-column blocks */
+.grid-2{
   display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
+  grid-template-columns: 1fr 1fr;
   gap:18px;
+  margin-top:26px;
 }
-.service{
+.block{
   background:#fff;
   border:1px solid var(--line);
-  border-radius:16px;
-  padding:16px 16px 14px;
-  box-shadow: 0 10px 26px rgba(18,53,40,.06);
+  border-radius: var(--radius);
+  padding:18px;
+  box-shadow: var(--shadow-soft);
+  transition: transform .18s ease, box-shadow .18s ease;
 }
-.service strong{
-  display:block;
-  font-weight:600;
+.block:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(18,53,40,.10);
+}
+.block h3{
+  margin:0 0 12px;
+  font-weight:650;
   font-size:14px;
+  letter-spacing:.4px;
+  color:var(--green-dark);
+  text-transform:uppercase;
 }
-.service small{
-  display:block;
-  margin-top:6px;
+.list{
+  margin:0;
+  padding-left:18px;
   color:var(--muted);
-  font-size:13px;
+  line-height:1.95;
+  font-size:15px;
 }
 
-/* Image Strip */
+/* Image strip */
 .strip{
   display:grid;
   grid-template-columns: repeat(3,1fr);
 }
 .strip img{
   width:100%;
-  height:320px;
+  height:330px;
   object-fit:cover;
+  filter: contrast(1.02) saturate(1.02);
+  transition: transform .5s cubic-bezier(.2,.8,.2,1), filter .2s ease;
+}
+.strip img:hover{
+  transform: scale(1.02);
+  filter: contrast(1.05) saturate(1.05);
 }
 
-/* Location */
+/* Banner */
+.banner{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background: linear-gradient(135deg, rgba(43,182,115,.18), rgba(234,246,240,.85));
+}
+.banner-inner{
+  padding:22px 0;
+  display:grid;
+  gap:10px;
+}
+.banner strong{font-weight:650}
+.banner .small{color:var(--muted); font-size:14px}
+
+/* Map */
 iframe{
   width:100%;
   height:360px;
@@ -201,12 +284,12 @@ iframe{
   gap:22px;
   margin-top:22px;
 }
-.form{
+.form,.details{
   background:#fff;
   border:1px solid var(--line);
   border-radius: var(--radius);
   padding:18px;
-  box-shadow: 0 10px 28px rgba(18,53,40,.06);
+  box-shadow: var(--shadow-soft);
 }
 .form input,.form textarea{
   width:100%;
@@ -215,17 +298,23 @@ iframe{
   border:1px solid #cfe8db;
   font:inherit;
   margin-top:10px;
+  outline:none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.form input:focus,.form textarea:focus{
+  border-color: rgba(43,182,115,.55);
+  box-shadow: 0 0 0 4px rgba(43,182,115,.10);
 }
 .form textarea{min-height:120px; resize:vertical}
-.details{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius: var(--radius);
-  padding:18px;
-  box-shadow: 0 10px 28px rgba(18,53,40,.06);
-}
 .details p{margin:10px 0}
-.details .k{color:var(--muted); font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.6px; margin-top:8px}
+.details .k{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:650;
+  text-transform:uppercase;
+  letter-spacing:.7px;
+  margin-top:8px
+}
 
 /* Footer */
 footer{
@@ -236,83 +325,131 @@ footer{
   font-size:13px;
 }
 
-/* Scroll reveal */
-.reveal{opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease}
-.reveal.in{opacity:1; transform: translateY(0)}
+/* Animations */
+.reveal{
+  opacity:0;
+  transform: translateY(18px);
+  transition: opacity .65s ease, transform .65s ease;
+  will-change: transform, opacity;
+}
+.reveal.in{
+  opacity:1;
+  transform: translateY(0);
+}
 
+/* stagger */
+.stagger > *{opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease}
+.stagger.in > *{opacity:1; transform: translateY(0)}
+.stagger.in > *:nth-child(1){transition-delay:.02s}
+.stagger.in > *:nth-child(2){transition-delay:.06s}
+.stagger.in > *:nth-child(3){transition-delay:.10s}
+.stagger.in > *:nth-child(4){transition-delay:.14s}
+.stagger.in > *:nth-child(5){transition-delay:.18s}
+.stagger.in > *:nth-child(6){transition-delay:.22s}
+.stagger.in > *:nth-child(7){transition-delay:.26s}
+.stagger.in > *:nth-child(8){transition-delay:.30s}
+.stagger.in > *:nth-child(9){transition-delay:.34s}
+.stagger.in > *:nth-child(10){transition-delay:.38s}
+.stagger.in > *:nth-child(11){transition-delay:.42s}
+
+/* Mobile */
 @media(max-width:920px){
   .hero-grid{grid-template-columns:1fr}
   .hero-card img{height:320px}
-  .services{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
   .strip{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
   h1{font-size:34px}
+  .section{padding:70px 0}
 }
 </style>
 </head>
 
-<body>
+<body class="bg-wash">
 
 <header>
   <div class="container header-inner">
-    <div class="brand">
-      <!-- EXACT LOGO FROM YOUR FLYER (embedded) -->
-      <img alt="Fountains of Care logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAADcCAYAAABWJQQ0AAABn0lEQVR4nO3dQU7bQBQF0Jm0g2m3wQp0oF8u7b0oYqV6yBvQp0z5gkQ8mG3m4m2Qz9wq8Yb2g1Q3m7b0m8mQwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPh0mXf0m4q+0t7m2kq6f8gZr0h5u0wJb2fQbq1n9m0c0b2s4m9+v8yYpWm5uQJp0o7Y0qk0aYqfVb6m3v5h0y1b7n0o7G8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQm2m8m6xGmXb7m0o9r8mQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL4z8wQy1kq0v8cAAAAASUVORK5CYII=" />
-      <div>
-        <div class="brand-title">Fountains of Care Pty Ltd</div>
-        <span class="brand-sub">Independence • Respect • Dignity</span>
-      </div>
+    <div>
+      <div class="brand-title">FOUNTAINS OF CARE Pty Ltd</div>
+      <span class="brand-sub">INDEPENDENCE ~ RESPECT ~ DIGNITY</span>
     </div>
 
     <nav>
-      <a href="#services">Services</a>
+      <a href="#support">Support</a>
+      <a href="#services">Other services</a>
       <a href="#location">Location</a>
       <a href="#contact" class="btn">Contact</a>
     </nav>
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="top">
   <div class="container hero-grid">
     <div class="reveal">
       <div class="badge"><span class="dot"></span> Registered NDIS Service Provider</div>
-      <h1>Compassionate disability support,<br>delivered with dignity.</h1>
-      <p class="lead">
-        Supporting independence through respectful, person-centred care at home and in the community.
-      </p>
+      <h1>Support that prioritizes<br>independence, respect and dignity.</h1>
+      <p class="lead">We are a multicultural company serving a multicultural community.</p>
       <div class="cta">
         <a class="btn" href="#contact">Enquire now</a>
-        <a class="btn secondary" href="#services">View services</a>
+        <a class="btn secondary" href="#support">See what we support</a>
+      </div>
+
+      <div class="flyer-card">
+        <p class="flyer-quote">
+          With a team of highly experienced nurses, we prioritize ongoing education and skill.
+          This commitment to excellence ensures our patients receive the best possible care,
+          with services that meet the highest standards of safety and quality.
+        </p>
       </div>
     </div>
 
     <div class="hero-card reveal">
       <img src="images/hero.png" alt="Support worker assisting a wheelchair user">
-      <div class="cap">Reliable support that puts safety, respect and dignity first.</div>
+      <div class="cap">INDEPENDENCE ~ RESPECT ~ DIGNITY</div>
     </div>
   </div>
 </section>
 
-<section id="services" class="section soft">
+<section class="section soft" id="support">
   <div class="container">
     <div class="reveal">
-      <h2>What we support you with</h2>
-      <p class="sub">Practical support across home routines, health tasks and community participation.</p>
+      <h2>WHAT WE SUPPORT YOU WITH</h2>
+      <p class="sub">Support tailored to daily life, health routines and community participation.</p>
     </div>
 
-    <div class="services">
-      <div class="service reveal">
-        <strong>Personal hygiene</strong>
-        <small>Daily Living Activities</small>
+    <div class="grid-2">
+      <div class="block reveal">
+        <h3>Support items</h3>
+        <ul class="list">
+          <li>Personal hygiene</li>
+          <li>Daily Living Activities</li>
+          <li>Medication administration</li>
+          <li>Diabetes management</li>
+          <li>PEG feeding</li>
+          <li>Transport</li>
+          <li>Community Access</li>
+          <li>Household tasks</li>
+          <li>Sub cut Injections</li>
+          <li>Catheter Care</li>
+        </ul>
       </div>
-      <div class="service reveal"><strong>Medication administration</strong><small>Support to follow plans safely.</small></div>
-      <div class="service reveal"><strong>Diabetes management</strong><small>Assistance aligned with care guidance.</small></div>
-      <div class="service reveal"><strong>PEG feeding</strong><small>Careful support for feeding routines.</small></div>
-      <div class="service reveal"><strong>Transport</strong><small>Appointments, errands and community travel.</small></div>
-      <div class="service reveal"><strong>Community access</strong><small>Meaningful participation and outings.</small></div>
-      <div class="service reveal"><strong>Household tasks</strong><small>Help to keep life running smoothly.</small></div>
-      <div class="service reveal"><strong>Subcutaneous injections</strong><small>Delivered with care and safety.</small></div>
-      <div class="service reveal"><strong>Catheter care</strong><small>Respectful routine support.</small></div>
+
+      <div class="block reveal" id="services">
+        <h3>Other services</h3>
+        <ul class="list">
+          <li>SIL Accommodation</li>
+          <li>Maintaining Employment</li>
+          <li>Complex Wound Care</li>
+          <li>Life Stage Transition</li>
+          <li>Organising and Attending your Appointments</li>
+        </ul>
+
+        <div class="flyer-card" style="margin-top:14px">
+          <p class="flyer-quote" style="font-weight:600;color:var(--text)">
+            We are a multicultural company serving a multicultural community
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -323,14 +460,28 @@ footer{
   <img src="images/hands.png" alt="Hands holding support">
 </section>
 
+<section class="banner">
+  <div class="container banner-inner reveal">
+    <div>
+      <strong>SERVICING: MUDGEE , RYLSTONE, GULGONG &amp; SURROUNDINGS</strong>
+    </div>
+    <div class="small">
+      Covid Safe - all our staff are fully vaccinated, well trained in infection control and use appropriate PPE as needed.
+    </div>
+  </div>
+</section>
+
 <section class="section soft" id="location">
   <div class="container">
     <div class="reveal">
-      <h2>Our location</h2>
-      <p class="sub">5a Croake Way, Mudgee 2850 NSW</p>
+      <h2>Location</h2>
+      <p class="sub">Location :5a Croake Way Mudgee 2850 NSW</p>
     </div>
+
     <div class="reveal" style="margin-top:16px">
-      <iframe src="https://www.google.com/maps?q=5a%20Croake%20Way%20Mudgee%202850&output=embed" loading="lazy" title="Fountains of Care location map"></iframe>
+      <iframe src="https://www.google.com/maps?q=5a%20Croake%20Way%20Mudgee%202850&output=embed"
+              loading="lazy"
+              title="Fountains of Care location map"></iframe>
     </div>
   </div>
 </section>
@@ -338,30 +489,34 @@ footer{
 <section class="section" id="contact">
   <div class="container">
     <div class="reveal">
-      <h2>Contact us</h2>
-      <p class="sub">Send a message and we’ll get back to you as soon as possible.</p>
+      <h2>Contact</h2>
+      <p class="sub">Use the contact form below or call/email using the flyer details.</p>
     </div>
 
     <div class="contact-grid">
       <form class="form reveal" action="https://formsubmit.co/admin@fountainsofcare.com.au" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" value="New website enquiry - Fountains of Care">
+        <input type="hidden" name="_next" value="https://fountainsofcare.github.io/fountains-of-care/?v=done#contact">
+
         <input name="name" type="text" placeholder="Your name" required>
         <input name="email" type="email" placeholder="Your email" required>
         <textarea name="message" placeholder="Your message" required></textarea>
+
         <button class="btn" type="submit">Send message</button>
       </form>
 
       <div class="details reveal">
         <div class="k">Phone</div>
-        <p><strong>Lyn:</strong> <a href="tel:+61423269271">0423 269 271</a> | <a href="tel:+61263172302">(02) 6317 2302</a></p>
+        <p><strong>Lyn:</strong> <a href="tel:+61423269271">0423 269 271</a> / <a href="tel:+61263172302">02 6317 2302</a></p>
         <p><strong>George:</strong> <a href="tel:+61468576678">0468 857 6678</a></p>
 
         <div class="k">Email</div>
         <p><a href="mailto:admin@fountainsofcare.com.au">admin@fountainsofcare.com.au</a></p>
+        <p><a href="mailto:info@fountainsofcare.com.au">info@fountainsofcare.com.au</a></p>
 
-        <div class="k">Address</div>
-        <p>5a Croake Way, Mudgee 2850 NSW</p>
+        <div class="k">Status</div>
+        <p><strong>Registered NDIS Service Provider</strong></p>
       </div>
     </div>
   </div>
@@ -373,7 +528,9 @@ footer{
 
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
-  const els = document.querySelectorAll('.reveal');
+
+  // Reveal animations
+  const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if(e.isIntersecting){
@@ -382,7 +539,7 @@ footer{
       }
     });
   }, {threshold: 0.12});
-  els.forEach(el => io.observe(el));
+  revealEls.forEach(el => io.observe(el));
 </script>
 
 </body>
