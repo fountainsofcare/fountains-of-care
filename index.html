@@ -8,131 +8,119 @@
   <meta name="description" content="Fountains of Care Pty Ltd – NDIS registered disability support provider servicing Mudgee, Rylstone, Gulgong & surrounding areas." />
 
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
 <!-- HEADER -->
-<header class="header slide-in">
+<header class="header animate">
   <div class="container header-flex">
-    <div class="logo">
-      <div class="logo-icon">🤝</div>
-      <div>
-        <h1>Fountains of Care</h1>
-        <p>Independence • Respect • Dignity</p>
-      </div>
+    <div class="brand">
+      <strong>Fountains of Care Pty Ltd</strong>
+      <span>Independence • Respect • Dignity</span>
     </div>
-    <a href="#contact" class="btn">Contact Us</a>
+    <a href="#contact" class="btn">Contact</a>
   </div>
 </header>
 
 <!-- HERO -->
-<section class="hero slide-in">
+<section class="hero animate">
   <div class="container hero-grid">
     <div>
-      <span class="badge">Registered NDIS Service Provider</span>
-      <h2>Quality, respectful disability support</h2>
+      <h1>Compassionate disability support,<br>delivered with dignity.</h1>
       <p>
-        Supporting independence and dignity through compassionate, reliable disability services
-        delivered by experienced staff.
+        We provide respectful, reliable support that helps participants live
+        independently and confidently — at home and in the community.
       </p>
-      <a href="#services" class="btn-outline">View Services</a>
+      <a href="#services" class="btn-outline">Our services</a>
     </div>
 
-    <img
-      src="https://images.pexels.com/photos/3845763/pexels-photo-3845763.jpeg"
-      alt="Disability support worker assisting client"
-      class="hero-img"
-    >
+    <img src="images/hero-wheelchair.png" alt="Support worker assisting wheelchair user">
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="section slide-in">
+<section id="services" class="section animate">
   <div class="container">
-    <h2>What We Support You With</h2>
+    <h2>What we support you with</h2>
 
-    <div class="grid">
-      <div class="card">Personal hygiene</div>
-      <div class="card">Medication administration</div>
-      <div class="card">Diabetes management</div>
-      <div class="card">PEG feeding</div>
-      <div class="card">Transport</div>
-      <div class="card">Community access</div>
-      <div class="card">Household tasks</div>
-      <div class="card">Subcut injections</div>
-      <div class="card">Catheter care</div>
+    <div class="services-grid">
+      <div>Personal hygiene</div>
+      <div>Medication administration</div>
+      <div>Diabetes management</div>
+      <div>PEG feeding</div>
+      <div>Transport</div>
+      <div>Community access</div>
+      <div>Household tasks</div>
+      <div>Subcutaneous injections</div>
+      <div>Catheter care</div>
     </div>
   </div>
 </section>
 
 <!-- IMAGE STRIP -->
-<section class="image-strip slide-in">
-  <img src="https://images.pexels.com/photos/5905795/pexels-photo-5905795.jpeg" alt="Support worker assisting mobility">
-  <img src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg" alt="Community access support">
-  <img src="https://images.pexels.com/photos/6034669/pexels-photo-6034669.jpeg" alt="Medication support">
+<section class="image-strip animate">
+  <img src="images/support-walker.png" alt="Support worker helping with walker">
+  <img src="images/meal-support.png" alt="Support worker assisting with meal">
+  <img src="images/hand-support.png" alt="Hands holding in support">
 </section>
 
 <!-- OTHER SERVICES -->
-<section class="section light-green slide-in">
+<section class="section soft animate">
   <div class="container">
-    <h2>Other Services</h2>
+    <h2>Other services</h2>
     <ul>
-      <li>SIL Accommodation</li>
+      <li>SIL accommodation</li>
       <li>Maintaining employment</li>
       <li>Complex wound care</li>
       <li>Life stage transition</li>
       <li>Organising & attending appointments</li>
     </ul>
 
-    <p class="highlight">
+    <p class="note">
       We are a multicultural company serving a multicultural community.
     </p>
   </div>
 </section>
 
-<!-- SERVICE AREA -->
-<section class="section slide-in">
+<!-- SERVICE AREAS -->
+<section class="section animate">
   <div class="container center">
-    <h2>Servicing Areas</h2>
+    <h2>Servicing areas</h2>
     <p>Mudgee • Rylstone • Gulgong • Surrounding areas</p>
-    <p class="small">COVID Safe – Fully vaccinated staff, infection control & PPE</p>
+    <p class="small">
+      COVID Safe – staff trained in infection control and PPE
+    </p>
   </div>
 </section>
 
-<!-- GOOGLE MAP -->
-<section class="section light-green slide-in">
+<!-- MAP -->
+<section class="section soft animate">
   <div class="container">
-    <h2>Our Location</h2>
+    <h2>Our location</h2>
     <iframe
       src="https://www.google.com/maps?q=5a%20Croake%20Way%20Mudgee%202850&output=embed"
-      class="map"
       loading="lazy">
     </iframe>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="section slide-in">
+<section id="contact" class="section animate">
   <div class="container">
-    <h2>Contact Us</h2>
+    <h2>Contact us</h2>
 
-    <!-- CONTACT FORM -->
     <form
       action="https://formsubmit.co/admin@fountainsofcare.com.au"
       method="POST"
-      class="contact-form"
+      class="form"
     >
       <input type="hidden" name="_captcha" value="false">
-
       <input type="text" name="name" placeholder="Your name" required>
       <input type="email" name="email" placeholder="Your email" required>
       <textarea name="message" placeholder="Your message" required></textarea>
-
-      <button type="submit" class="btn">Send Message</button>
+      <button type="submit" class="btn">Send message</button>
     </form>
 
     <div class="contact-details">
@@ -144,7 +132,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   © 2026 Fountains of Care Pty Ltd – Registered NDIS Service Provider
 </footer>
